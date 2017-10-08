@@ -1,11 +1,51 @@
-﻿<!DOCTYPE html>
+﻿@{ 
+    var action = ViewContext.RouteData.GetRequiredString("action");
+    var isLoggingOrRegistering = false;
+    if (action != "Login" && action != "Register")
+    {
+        isLoggingOrRegistering = true;
+    }
+}
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+    <link href="~/Content/content.css" rel="stylesheet">
+    <title>@ViewBag.Title - Web-programming</title>
 </head>
 <body>
-    @RenderBody()
+    <div class="w3-bar w3-light-gray">
+        <a class="w3-bar-item w3-button lobster" style="font-family: 'Lobster', cursive" href="@Url.Action("Index", "Home")">Web-programming</a>
+        @if (isLoggingOrRegistering) {
+            if (!HttpContext.Current.User.Identity.IsAuthenticated)
+            {
+                <a class="w3-bar-item w3-button w3-right" href="@Url.Action("Login", "Account")">Sign In</a>
+                <a class="w3-bar-item w3-button w3-right" href="@Url.Action("Register", "Account")">Sign Up</a>
+            }
+            else
+            {
+                <button class="w3-bar-item w3-button">Profile</button>
+                <a class="w3-bar-item w3-button">Questions <span class="w3-badge w3-orange w3-text-white">6</span></a>
+                <button class="w3-bar-item w3-button">Thread</button>
+                <div class="w3-dropdown-hover w3-right">
+                    <button class="w3-button">@HttpContext.Current.User.Identity.Name</button>
+                    <div class="w3-dropdown-content w3-bar-block w3-card-4 w3-animate-opacity" style="right: 0">
+                        <a href="#" class="w3-bar-item w3-button">Manage profile</a>
+                        <a href="@Url.Action("Logout", "Account")" class="w3-bar-item w3-button">Sign out</a>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+    <div class="w3-content" style="max-width: 1024px; margin-bottom: 20px">
+        @RenderBody()
+    </div>     
+    <div class="w3-bar w3-light-gray" style="position: fixed; bottom: 0; padding-left: 40px">
+        <button class="w3-bar-item w3-button">&copy; @System.DateTime.UtcNow.Year - Web-programming</button>
+    </div>
 </body>
 </html>

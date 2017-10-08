@@ -14,16 +14,15 @@ namespace WP.Controllers
     public class AccountController : BaseController
     {
         // GET: Account
-        public ActionResult Login(string returnUrl)
+        public ActionResult Login()
         {
             if (HttpContext.User.Identity.IsAuthenticated)
-                return RedirectToAction("Index", "Homde");
-            ViewBag.ReturnUrl = returnUrl;
+                return RedirectToAction("Index", "Home");
             return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
+        public async Task<ActionResult> Login(LoginViewModel model)
         {
             AppUser user = await UserManager.FindAsync(model.UserName, model.Password);
 
@@ -38,7 +37,7 @@ namespace WP.Controllers
 
                 AuthManager.SignOut();
                 AuthManager.SignIn(new AuthenticationProperties { IsPersistent = false }, ident);
-                return Redirect(returnUrl);
+                return RedirectToAction("Index", "Home");
             }
 
             return View(model);
@@ -46,7 +45,7 @@ namespace WP.Controllers
         public ActionResult Register()
         {            
             if (HttpContext.User.Identity.IsAuthenticated)
-                return RedirectToAction("Index", "Homde");
+                return RedirectToAction("Index", "Home");
             return View();
         }
         [HttpPost]
@@ -62,7 +61,7 @@ namespace WP.Controllers
                 if (result.Succeeded)
                     return RedirectToAction("Login");
                 else
-                    AddErrorsFromResult(result);
+                    AddErrorsFromResult(result);                
             }
             return View(model);
         }

@@ -5,8 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 
 namespace WP.Controllers
-{   
-    [Authorize]
+{
     public class HomeController : BaseController
     {
         // GET: Home        

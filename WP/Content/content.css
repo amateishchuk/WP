@@ -1,0 +1,10 @@
+﻿.w3-input:focus {
+    border-bottom: 1px solid dimgrey;
+    outline: none;
+}
+.mb10 {
+    margin-bottom: 10px;
+}
+.ml10 {
+    margin-left: 10px;
+}

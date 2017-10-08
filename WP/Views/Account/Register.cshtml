@@ -1,0 +1,33 @@
+﻿@model WP.Models.RegisterViewModel
+
+@{
+    ViewBag.Title = "Register";
+}
+<div class="w3-display-middle" style="width:600px">
+    <h2>Sign Up</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.ValidationSummary(true, "", new { @class = "w3-text-red", placeholder = "Password" })
+        <div class="mb10">
+            @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "w3-input", placeholder = "Username", required = "required" } })
+            @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "w3-text-red " })
+        </div>
+        <div class="mb10">
+            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "w3-input", placeholder = "E-mail", type = "email", required = "required" } })
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "w3-text-red" })
+        </div>
+        <div class="mb10">
+            @Html.PasswordFor(model => model.Password, new { @class = "w3-input", placeholder = "Password", required = "required" })
+            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "w3-text-red" })
+        </div>
+        <div class="mb10">
+            @Html.PasswordFor(model => model.ConfirmPassword, new { @class = "w3-input", placeholder = "ConfirmPassword", required = "required" })
+            @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "w3-text-red" })
+        </div>
+        <input type="submit" value="Sign up" class="w3-btn w3-white w3-border w3-border-green w3-text-green w3-round-large w3-right ml10" />
+        <a class="w3-btn w3-white w3-border w3-border-blue w3-text-blue w3-round-large w3-right" href="@Url.Action("Login", "Account")">Sign in</a>
+    }
+</div>
