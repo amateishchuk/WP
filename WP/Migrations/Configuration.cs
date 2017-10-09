@@ -15,7 +15,7 @@ namespace WP.Migrations
             AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(WP.Models.AppIdentityDbContext context)
+        protected override void Seed(AppIdentityDbContext context)
         {
             AppUserManager userMgr = new AppUserManager(new UserStore<AppUser>(context));
             AppRoleManager roleMgr = new AppRoleManager(new RoleStore<AppRole>(context));

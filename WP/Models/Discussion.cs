@@ -15,6 +15,9 @@ namespace WP.Models
         [Required]
         public string Question { get; set; }
         public string Response { get; set; }
+        [Required]
+        public DateTime QuestionDateTime { get; set; }
+        public DateTime? ResponseDateTime { get; set; }
         public virtual ICollection<Point> Points { get; set; }
 
         public Discussion()

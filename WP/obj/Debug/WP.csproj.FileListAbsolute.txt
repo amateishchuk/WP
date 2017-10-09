@@ -44,3 +44,4 @@ E:\WP\WP\obj\Debug\WP.Migrations.Initial.resources
 E:\WP\WP\obj\Debug\WP.csproj.GenerateResource.Cache
 E:\WP\WP\obj\Debug\WP.dll
 E:\WP\WP\obj\Debug\WP.pdb
+E:\WP\WP\obj\Debug\WP.Migrations.Discussion_AddDateTimes.resources

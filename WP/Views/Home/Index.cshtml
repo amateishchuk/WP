@@ -12,7 +12,7 @@
     </h3>
     @if (HttpContext.Current.User.Identity.IsAuthenticated)
     {
-        <a class="w3-btn w3-white w3-border w3-border-blue w3-text-blue w3-round-large w3-right"
+        <a class="w3-btn w3-white w3-border w3-border-blue w3-text-blue w3-round-large"
            href=@Url.Action("Profile", "Account")>To profile</a>
     }
     else

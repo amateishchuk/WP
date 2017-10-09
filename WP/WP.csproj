@@ -142,6 +142,10 @@
     <Compile Include="Migrations\201710080825135_Initial.Designer.cs">
       <DependentUpon>201710080825135_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710090613500_Discussion_AddDateTimes.cs" />
+    <Compile Include="Migrations\201710090613500_Discussion_AddDateTimes.Designer.cs">
+      <DependentUpon>201710090613500_Discussion_AddDateTimes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppIdentityDbContext.cs" />
     <Compile Include="Models\AppRole.cs" />
@@ -175,6 +179,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201710080825135_Initial.resx">
       <DependentUpon>201710080825135_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710090613500_Discussion_AddDateTimes.resx">
+      <DependentUpon>201710090613500_Discussion_AddDateTimes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
