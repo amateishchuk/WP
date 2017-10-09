@@ -8,3 +8,14 @@
 .ml10 {
     margin-left: 10px;
 }
+textarea:focus {
+    border: 1px solid #2196F3 !important;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+textarea {
+    resize: none;
+    outline: none;
+}
+.pt5{
+    padding-top: 5px;
+}

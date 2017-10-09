@@ -71,12 +71,25 @@ namespace WP.Controllers
             AuthManager.SignOut();
             return RedirectToAction("Login");
         }
+        [Authorize]
+        public async Task<ActionResult> Profile()
+        {
+            var userId = HttpContext.User.Identity.GetUserId();
+            var user = await UserManager.FindByIdAsync(userId);
+            return View(user);
+        }
         private void AddErrorsFromResult(IdentityResult result)
         {
             foreach (string error in result.Errors)
             {
                 ModelState.AddModelError("", error);
             }
+        }
+
+        public JsonResult GetUsersByUsernameOrEmail(string criteria)
+        {
+            var user = UserManager.Users.Where(u => u.UserName.ToLower().Contains(criteria.ToLower())).Select(u => new { userName = u.UserName });
+            return Json(new { results = user }, JsonRequestBehavior.AllowGet);
         }
     }
 }

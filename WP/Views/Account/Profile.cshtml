@@ -1,0 +1,19 @@
+﻿@model WP.Models.AppUser
+@{
+    ViewBag.Title = "Profile";
+}
+
+<h2>@Model.UserName</h2>
+<h4>@Model.Email</h4>
+@if (HttpContext.Current.User.Identity.Name == Model.UserName)
+{
+    <div style="width: 600px">
+        <textarea class="w3-border w3-round-large" placeholder="Ask me..." rows="3" style="width: 100%"></textarea>
+        <p>
+            <button class="w3-btn w3-tiny w3-white w3-border w3-border-blue w3-text-blue w3-round-large w3-right ml10" type="button">Send question</button>
+            <span class="w3-right pt5" style="display: inline-block">255 symbols left </span>
+        </p>
+    </div>
+}
+<h3 style="padding-top: 30px;">Answers: </h3>
+

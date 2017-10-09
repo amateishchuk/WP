@@ -8,7 +8,7 @@
 }
 
 <!DOCTYPE html>
-<html>
+<html ng-app="coreApp">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,9 +17,14 @@
     <link href="~/Content/content.css" rel="stylesheet">
     <title>@ViewBag.Title - Web-programming</title>
 </head>
-<body>
+<body ng-controller="rootCtrl">
     <div class="w3-bar w3-light-gray">
         <a class="w3-bar-item w3-button lobster" style="font-family: 'Lobster', cursive" href="@Url.Action("Index", "Home")">Web-programming</a>
+        <angucomplete-alt id="users" placeholder="Search user" pause="400" selected-object="GetSelectedUserNameProfile"
+                          remote-url="/Account/GetUsersByUsernameOrEmail?criteria="
+                          remote-url-data-field="results"
+                          title-field="userName"
+                          input-class="w3-input" />
         @if (isLoggingOrRegistering) {
             if (!HttpContext.Current.User.Identity.IsAuthenticated)
             {
@@ -47,5 +52,7 @@
     <div class="w3-bar w3-light-gray" style="position: fixed; bottom: 0; padding-left: 40px">
         <button class="w3-bar-item w3-button">&copy; @System.DateTime.UtcNow.Year - Web-programming</button>
     </div>
+    @Scripts.Render("~/bundles/angular")
+    @RenderSection("scripts", required: false)
 </body>
 </html>
