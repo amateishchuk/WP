@@ -1,7 +1,24 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Hello";
 }
 
-<h2>Index</h2>
+<div class="w3-display-middle w3-center" style="margin: 30px;">
+    <h1>
+        Welcome to *WebAppName*
+    </h1>
+    <h3>
+        Ask and answer questions
+    </h3>
+    @if (HttpContext.Current.User.Identity.IsAuthenticated)
+    {
+        <a class="w3-btn w3-white w3-border w3-border-blue w3-text-blue w3-round-large w3-right"
+           href=@Url.Action("Profile", "Account")>To profile</a>
+    }
+    else
+    {
+        <a class="w3-btn w3-white w3-border w3-border-blue w3-text-blue w3-round-large"
+           href=@Url.Action("Login", "Account")>Sign in</a>
+    }
+</div>
 

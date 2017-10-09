@@ -27,7 +27,13 @@
             @Html.PasswordFor(model => model.ConfirmPassword, new { @class = "w3-input", placeholder = "ConfirmPassword", required = "required" })
             @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "w3-text-red" })
         </div>
-        <input type="submit" value="Sign up" class="w3-btn w3-white w3-border w3-border-green w3-text-green w3-round-large w3-right ml10" />
-        <a class="w3-btn w3-white w3-border w3-border-blue w3-text-blue w3-round-large w3-right" href="@Url.Action("Login", "Account")">Sign in</a>
+        <div class="w3-center">
+            <p>
+                <input type="submit" value="Sign up" class="w3-btn w3-white w3-border w3-border-green w3-text-green w3-round-large w3-center" />
+            </p>
+            <p>
+                Have account? <a class="w3-hover-text-blue" href="@Url.Action("Login", "Account")">Sign in</a>
+            </p>
+        </div>
     }
 </div>
